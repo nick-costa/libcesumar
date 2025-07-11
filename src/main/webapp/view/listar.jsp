@@ -42,7 +42,7 @@
     </table>
 
     <br>
-    <a href="${pageContext.request.contextPath}/index.jsp">
+    <a href="${pageContext.request.contextPath}/view/index.jsp">
         <button>Voltar para o Cadastro</button>
     </a>
 </body>

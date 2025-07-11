@@ -3,13 +3,8 @@
 <%
     String erro = (String) request.getAttribute("erro");
     if (erro != null) {
-%>
-    <div style="color: red;">
-        <strong><%= erro %></strong>
-    </div>
-<%
     }
-%>
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +12,9 @@
     <title>Cadastro de Livros</title>
 </head>
 <body>
+	<div style="color: red;">
+        <strong><%= erro %></strong>
+    </div>
     <h2>Cadastro de Livro</h2>
     <form action="${pageContext.request.contextPath}/livros" method="POST">
         <label for="titulo">Título:</label>
