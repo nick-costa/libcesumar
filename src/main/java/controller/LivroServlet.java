@@ -14,7 +14,8 @@ public class LivroServlet extends HttpServlet {
     private ArrayList<Livro> livros = new ArrayList<>(); 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    		throws ServletException, IOException {
         String action = request.getParameter("action");
         if ("delete".equals(action)) {
             String isbn = request.getParameter("isbn");
@@ -34,7 +35,6 @@ public class LivroServlet extends HttpServlet {
         String anoStr = request.getParameter("ano");
         String isbn = request.getParameter("isbn");
 
-        // Verificando se algum campo está vazio
         if (titulo == null || titulo.trim().isEmpty() || 
             autor == null || autor.trim().isEmpty() ||
             anoStr == null || anoStr.trim().isEmpty() ||
@@ -45,17 +45,32 @@ public class LivroServlet extends HttpServlet {
             return;
         }
 
-        // Verificando se o ano é um número válido
         int ano;
         try {
             ano = Integer.parseInt(anoStr);
+            
+            // Verificando se o ano não é maior que o ano atual
+            int anoAtual = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+            if (ano > anoAtual) {
+                request.setAttribute("erro", "O ano não pode ser maior que o ano atual!");
+                request.getRequestDispatcher("/view/index.jsp").forward(request, response);
+                return;
+            }
+
+            // Verificando se o ano tem 4 dígitos
+            if (anoStr.length() != 4) {
+                request.setAttribute("erro", "O ano deve ter 4 algarismos!");
+                request.getRequestDispatcher("/view/index.jsp").forward(request, response);
+                return;
+            }
+
         } catch (NumberFormatException e) {
             request.setAttribute("erro", "O ano deve ser um número válido!");
             request.getRequestDispatcher("/view/index.jsp").forward(request, response);  
             return;
         }
 
-        // Verificando se o ISBN é válido (deve ter exatamente 13 dígitos)
+        // Verificando se o ISBN tem exatamente 13 dígitos
         if (!isbn.matches("\\d{13}")) {
             request.setAttribute("erro", "O ISBN deve ter exatamente 13 dígitos!");
             request.getRequestDispatcher("/view/index.jsp").forward(request, response);  
@@ -71,14 +86,13 @@ public class LivroServlet extends HttpServlet {
             }
         }
 
-        // Criando o livro e adicionando à lista
         Livro livro = new Livro(titulo, autor, ano, isbn);
         livros.add(livro);
         response.sendRedirect("livros");  
     }
 
     // Método para excluir um livro baseado no ISBN
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) 
     		throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
 

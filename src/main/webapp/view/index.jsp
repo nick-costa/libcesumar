@@ -1,20 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
-<%
-    String erro = (String) request.getAttribute("erro");
-    if (erro != null) {
-    }
-    %>
-<!DOCTYPE html>
-<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Livros</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-	<div style="color: red;">
-        <strong><%= erro %></strong>
-    </div>
     <h2>Cadastro de Livro</h2>
     <form action="${pageContext.request.contextPath}/livros" method="POST">
         <label for="titulo">Título:</label>
@@ -26,11 +15,11 @@
         <br>
 
         <label for="ano">Ano de Publicação:</label>
-        <input type="number" id="ano" name="ano" required>
+        <input type="text" id="ano" name="ano" required pattern="\d{4}" title="O ano deve ter 4 algarismos">
         <br>
 
         <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn" required>
+        <input type="text" id="isbn" name="isbn" required pattern="\d{13}" title="O ISBN deve ter 13 dígitos">
         <br>
 
         <button type="submit">Cadastrar</button>
