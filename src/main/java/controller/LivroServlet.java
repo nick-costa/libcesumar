@@ -27,7 +27,8 @@ public class LivroServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    		throws ServletException, IOException {
         String titulo = request.getParameter("titulo");
         String autor = request.getParameter("autor");
         String anoStr = request.getParameter("ano");
