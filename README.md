@@ -54,7 +54,7 @@ O sistema oferece as seguintes funcionalidades:
 
 - Evita duplicidade de ISBN ao tentar cadastrar um livro com o mesmo número.
 
-####🎨 Design Responsivo
+### 🎨 Design Responsivo
 O sistema foi projetado para ser responsivo, ou seja, funciona bem em dispositivos de diferentes tamanhos de tela, como:
 
 - Desktop
@@ -85,7 +85,7 @@ Faça o push para sua branch (ex: git push origin minha-feature).
 
 Abra um Pull Request para este repositório.
 
-###🏅 Licença
+ Licença
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para mais detalhes.
 
 🔗 Links Úteis
