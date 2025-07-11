@@ -85,10 +85,10 @@ Faça o push para sua branch (ex: git push origin minha-feature).
 
 Abra um Pull Request para este repositório.
 
-####🏅 Licença
+###🏅 Licença
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para mais detalhes.
 
-###🔗 Links Úteis
+🔗 Links Úteis
 Documentação Java: https://docs.oracle.com/javase/17/
 
 Apache Tomcat 9: http://tomcat.apache.org/
