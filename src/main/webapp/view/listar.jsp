@@ -1,15 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Livro" %>
-<!DOCTYPE html>
-<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Listagem de Livros</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
     <h2>Livros Cadastrados</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Título</th>
@@ -40,8 +37,6 @@
             %>
         </tbody>
     </table>
-
-    <br>
     <a href="${pageContext.request.contextPath}/view/index.jsp">
         <button>Voltar para o Cadastro</button>
     </a>
